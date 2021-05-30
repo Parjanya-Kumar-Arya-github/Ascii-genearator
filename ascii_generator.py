@@ -17,9 +17,14 @@ if not (os.path.isdir('Frame')):
 
     os.makedirs('Frame')
     while success:
-        success, image = vidObj.read()
-        cv2.imwrite("Frame/frame%d.jpg" % count, image)
-        count += 1
+        try:
+            success, image = vidObj.read()
+            cv2.imwrite("Frame/frame%d.jpg" % count, image)
+            count += 1
+        except:
+            break
+
+
 musicplay = threading.Thread(target=mixer.music.play())
 
 
